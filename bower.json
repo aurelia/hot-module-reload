@@ -1,0 +1,26 @@
+{
+  "name": "aurelia-hot-module-reload",
+  "version": "1.0.0",
+  "description": "Tools designed to enable HMR for Aurelia's loaders.",
+  "keywords": [
+    "aurelia",
+    "HMR"
+  ],
+  "homepage": "http://aurelia.io",
+  "main": "dist/commonjs/aurelia-hot-module-reload.js",
+  "moduleType": "node",
+  "bugs": {
+    "url": "https://github.com/aurelia/hot-module-reload/issues"
+  },
+  "license": "MIT",
+  "author": "Bazyli Brzóska <npm@invent.life> (https://invent.life/)",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/hot-module-reload"
+  },
+  "dependencies": {
+    "aurelia-dependency-injection": "^1.0.0",
+    "aurelia-metadata": "^1.0.0",
+    "aurelia-pal": "^1.0.0"
+  }
+}

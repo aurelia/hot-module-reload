@@ -1,0 +1,4 @@
+{
+  "name": "aurelia-hot-module-reload",
+  "main": "dist/commonjs/aurelia-hot-module-reload.d.ts"
+}

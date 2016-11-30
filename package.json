@@ -1,0 +1,48 @@
+{
+  "name": "aurelia-hot-module-reload",
+  "version": "1.0.0",
+  "description": "Tools designed to enable HMR for Aurelia's loaders.",
+  "keywords": [
+    "aurelia",
+    "HMR"
+  ],
+  "homepage": "http://aurelia.io",
+  "bugs": {
+    "url": "https://github.com/aurelia/hot-module-reload/issues"
+  },
+  "license": "MIT",
+  "author": "Bazyli Brzóska <npm@invent.life> (https://invent.life/)",
+  "main": "dist/commonjs/aurelia-hot-module-reload.js",
+  "typings": "dist/commonjs/aurelia-hot-module-reload.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/aurelia/hot-module-reload"
+  },
+  "scripts": {
+    "build:compile": "aurelia-tools ts-build-all --continue-when-failed --clean-before",
+    "build": "npm run build:compile",
+    "postbuild": "npm run build:doc",
+    "prebuild:doc": "aurelia-tools doc-build --continue-when-failed",
+    "build:doc": "aurelia-tools doc-shape-defs && aurelia-tools typedoc",
+    "postbuild:doc": "aurelia-tools doc-jsonshape",
+    "release": "aurelia-tools changelog"
+  },
+  "dependencies": {
+    "aurelia-dependency-injection": "^1.2.0",
+    "aurelia-loader": "^1.0.0",
+    "aurelia-metadata": "^1.0.2",
+    "aurelia-pal": "^1.0.0",
+    "aurelia-templating": "^1.1.2"
+  },
+  "devDependencies": {
+    "aurelia-tools": "github:aurelia/tools#cli",
+    "concurrently": "^3.1.0",
+    "cross-env": "^3.1.3",
+    "typescript": "next"
+  },
+  "aurelia": {
+    "documentation": {
+      "articles": []
+    }
+  }
+}
