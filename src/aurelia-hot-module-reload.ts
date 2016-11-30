@@ -11,13 +11,6 @@ import { rerenderMatchingSlotChildren, rerenderController } from './render-utils
 
 const UndefinedResourceModule = { id: null, mainResource: { metadata: {}, value: undefined } } as ResourceModuleCorrect;
 
-/*
-NOTES:
-
-creating behaviourResource:
-// HtmlBehaviorResource.create(container, BehaviorInstruction, element?, bindings?)
-*/
-
 export function getAuElements() {
   return Array.from(DOM.querySelectorAll('.au-target')) as Array<Element & AU>;
 }
@@ -43,64 +36,6 @@ export function getControllersWithClassInstances(oldPrototype: any) {
   ));
 
   return traversalInfo;
-  // console.log(controllers);
-
-  // const allTheControllers;
-  // const allThePlacesInstances = [] as Array<Array<string>>;
-  // const allThePlacesModules = [] as Array<Array<string>>;
-  // const allThePlacesInstances = [] as Array<string>;
-  // const allThePlacesModules = [] as Array<string>;
-  // const checkedStuff = new Set<any>();
-  // traverse(controllers).map(function(v) {
-  //   if (typeof v === 'object' || typeof v === 'function') {
-  //     if (checkedStuff.has(v)) {
-  //       return this.update(v, true); // stop here
-  //     }
-  //     checkedStuff.add(v);
-  //   }
-  //   if (typeof oldPrototype === 'function' && v instanceof oldPrototype) {
-  //     allThePlacesInstances.push(this.path.join('.'));
-  //     this.update(v, true); // stop here
-  //   } else if (v === oldPrototype) {
-  //     allThePlacesModules.push(this.path.join('.'));
-  //     this.update(v, true); // stop here
-  //   }
-  // });
-
-  // console.log(`instances`, allThePlacesInstances);
-  // console.log(`modules`, allThePlacesModules);
-  // let viewControllers = new Set<AUController>()
-  // let scopeControllers = new Set<AUController>()
-  // let slots = new Set<ViewSlotCorrect>()
-
-  // we return a set of:
-  // Controllers,
-  // Views to Update
-  // return [{
-  //   controller, // closest controller
-  //   pathToInstance, // were under the controller can we find the old instance
-  //   relatedView, // related view (if any)
-  //   relatedSlot, // related slot parent of the view (if any)
-  // }]
-
-
-  // controllers
-  //   .forEach(controller => {
-  //     const {matchingViewControllers, matchingScopeControllers, slotsWithMatchingViews} = traverseControllerForTemplates(controller, template);
-  //     matchingViewControllers.forEach(
-  //       controller => viewControllers.add(controller)
-  //     );
-  //     matchingScopeControllers.forEach(
-  //       controller => scopeControllers.add(controller)
-  //     );
-  //     slotsWithMatchingViews.forEach(
-  //       slot => slots.add(slot)
-  //     );
-  //   });
-  
-  // const toRender = {viewControllers, scopeControllers, slots};
-  // // console.log(`elements to rerender`, toRender);
-  // return toRender;
 }
 
 export class HmrContext {
