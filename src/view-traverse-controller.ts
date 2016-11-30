@@ -1,5 +1,5 @@
 import { ViewSlot } from 'aurelia-templating';
-import { AU, AUController, ViewCorrect, ViewSlotCorrect } from './_typings';
+import { AUController, ViewCorrect, ViewSlotCorrect } from './_typings';
 import { getAuElements } from './aurelia-hot-module-reload'
 
 export function getViewSlots(view: ViewCorrect) {

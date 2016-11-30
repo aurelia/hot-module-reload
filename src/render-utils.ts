@@ -66,7 +66,7 @@ export function rerenderController(e: AUController, type: 'scope' | 'view', newV
   if (nextSibling) {
     newView.insertNodesBefore(nextSibling);
   } else {
-    newView.appendNodesTo(parent);
+    newView.appendNodesTo(parent as HTMLElement);
   }
   if (!newView.isAttached && wasAttached) {
     newView.attached();

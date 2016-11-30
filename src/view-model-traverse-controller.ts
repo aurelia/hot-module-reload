@@ -111,7 +111,7 @@ export function traverseViewFactory(classOrFunction: any, viewFactory: ViewFacto
         classOrFunction, instruction.viewFactory, { ...info, immediateParent: instruction, propertyInParent: 'viewFactory' }
       ));
       if (instruction.providers && instruction.providers.length) {
-        instruction.providers.forEach((providerKey, index) => {
+        (instruction.providers as Array<any>).forEach((providerKey, index) => {
           if (providerKey === classOrFunction) {
             matches.push({ ...info, immediateParent: instruction.providers, propertyInParent: index })
           }
@@ -127,12 +127,12 @@ export function traverseViewFactory(classOrFunction: any, viewFactory: ViewFacto
   return matches;
 }
 
-export function traverseViewResources(classOrFunction: any, viewResources: ViewResources, info: TraversalInfo) {
+export function traverseViewResources(classOrFunction: any, viewResources: ViewResources | undefined, info: TraversalInfo) {
   const matches = [] as Array<TraversalInfo>
   if (!viewResources || info.previouslyTraversed.has(viewResources)) return matches;
   info.previouslyTraversed.add(viewResources);
   ['bindingBehaviors', 'valueConverters'].forEach(type => {
-    const viewResourceInstances = viewResources[type];
+    const viewResourceInstances = (viewResources as any)[type];
     if (viewResourceInstances) {
       Object.keys(viewResourceInstances).forEach(key => {
         const instance = viewResourceInstances[key];
@@ -148,7 +148,7 @@ export function traverseViewResources(classOrFunction: any, viewResources: ViewR
   return matches;
 }
 
-export function traverseBehaviorInstruction(classOrFunction: any, behaviorInstruction: BehaviorInstruction, info: TraversalInfo) {
+export function traverseBehaviorInstruction(classOrFunction: any, behaviorInstruction: BehaviorInstruction | undefined, info: TraversalInfo) {
   const matches = [] as Array<TraversalInfo>;
   if (!behaviorInstruction || info.previouslyTraversed.has(behaviorInstruction)) return matches;
   info.previouslyTraversed.add(behaviorInstruction);
