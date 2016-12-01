@@ -2,6 +2,20 @@
 
 Core functionality for Aurelia's Hot Module Reload (HMR) capabilities, which is shared by all loaders and tools.
 
+It enables editing Views, ViewModels, related components (such as ValueConverters and BindingBehaviors) and CSS without reloading the full website.
+
+## Examples
+
+### HMR for Views
+
+![HMR for Views](https://github.com/aurelia/hot-module-reload/raw/master/doc/hmr-view.gif)
+
+### HMR for ViewModels
+
+![HMR for ViewModels](https://github.com/aurelia/hot-module-reload/blob/master/doc/hmr-model.gif)
+
+## Note
+
 This library is part of the [Aurelia](http://www.aurelia.io/) platform and contains an implementation of Aurelia's loader interface to enable webpack.
 
 > To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.aurelia.io/) and [our email list](http://eepurl.com/ces50j). We also invite you to [follow us on twitter](https://twitter.com/aureliaeffect). If you have questions, please [join our community on Gitter](https://gitter.im/aurelia/discuss) or use [stack overflow](http://stackoverflow.com/search?q=aurelia). Documentation can be found [in our developer hub](http://aurelia.io/hub.html). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome or Firefox Extension and visit any of our repository's boards.
