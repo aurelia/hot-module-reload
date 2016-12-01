@@ -10,6 +10,7 @@ export interface TraversalInfo {
   childOfViewSlot?: ViewSlotCorrect;
   relatedView?: ViewCorrect;
   instance?: boolean;
+  duplicate?: boolean;
 }
 
 /**
@@ -169,11 +170,15 @@ export function traverseBehaviorInstruction(classOrFunction: any, behaviorInstru
 
 export function traverseViewModel(classOrFunction: any, viewModel: any, info: TraversalInfo) {
   const matches = [] as Array<TraversalInfo>;
-  if (!viewModel || info.previouslyTraversed.has(viewModel)) return matches;
+  if (!viewModel) return matches;
+  const duplicate = info.previouslyTraversed.has(viewModel);
   info.previouslyTraversed.add(viewModel);
 
   if (viewModel.constructor === classOrFunction) {
-    matches.push({ ...info, instance: true });
+    matches.push({ ...info, instance: true, duplicate });
+    if (duplicate) {
+      return matches;
+    }
   }
   matches.push(
     ...traverseOverrideContext(
