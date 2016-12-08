@@ -36,12 +36,6 @@ System.register(["aurelia-pal", "aurelia-metadata", "aurelia-templating", "aurel
         }
     };
     var __moduleName = context_1 && context_1.id;
-    /*
-    NOTES:
-    
-    creating behaviourResource:
-    // HtmlBehaviorResource.create(container, BehaviorInstruction, element?, bindings?)
-    */
     function getAuElements() {
         return Array.from(aurelia_pal_1.DOM.querySelectorAll('.au-target'));
     }
@@ -62,58 +56,6 @@ System.register(["aurelia-pal", "aurelia-metadata", "aurelia-templating", "aurel
         }));
         return traversalInfo;
         var _a, _b;
-        // console.log(controllers);
-        // const allTheControllers;
-        // const allThePlacesInstances = [] as Array<Array<string>>;
-        // const allThePlacesModules = [] as Array<Array<string>>;
-        // const allThePlacesInstances = [] as Array<string>;
-        // const allThePlacesModules = [] as Array<string>;
-        // const checkedStuff = new Set<any>();
-        // traverse(controllers).map(function(v) {
-        //   if (typeof v === 'object' || typeof v === 'function') {
-        //     if (checkedStuff.has(v)) {
-        //       return this.update(v, true); // stop here
-        //     }
-        //     checkedStuff.add(v);
-        //   }
-        //   if (typeof oldPrototype === 'function' && v instanceof oldPrototype) {
-        //     allThePlacesInstances.push(this.path.join('.'));
-        //     this.update(v, true); // stop here
-        //   } else if (v === oldPrototype) {
-        //     allThePlacesModules.push(this.path.join('.'));
-        //     this.update(v, true); // stop here
-        //   }
-        // });
-        // console.log(`instances`, allThePlacesInstances);
-        // console.log(`modules`, allThePlacesModules);
-        // let viewControllers = new Set<AUController>()
-        // let scopeControllers = new Set<AUController>()
-        // let slots = new Set<ViewSlotCorrect>()
-        // we return a set of:
-        // Controllers,
-        // Views to Update
-        // return [{
-        //   controller, // closest controller
-        //   pathToInstance, // were under the controller can we find the old instance
-        //   relatedView, // related view (if any)
-        //   relatedSlot, // related slot parent of the view (if any)
-        // }]
-        // controllers
-        //   .forEach(controller => {
-        //     const {matchingViewControllers, matchingScopeControllers, slotsWithMatchingViews} = traverseControllerForTemplates(controller, template);
-        //     matchingViewControllers.forEach(
-        //       controller => viewControllers.add(controller)
-        //     );
-        //     matchingScopeControllers.forEach(
-        //       controller => scopeControllers.add(controller)
-        //     );
-        //     slotsWithMatchingViews.forEach(
-        //       slot => slots.add(slot)
-        //     );
-        //   });
-        // const toRender = {viewControllers, scopeControllers, slots};
-        // // console.log(`elements to rerender`, toRender);
-        // return toRender;
     }
     exports_1("getControllersWithClassInstances", getControllersWithClassInstances);
     var aurelia_pal_1, aurelia_metadata_1, aurelia_templating_1, aurelia_dependency_injection_1, hmr_css_resource_1, view_model_traverse_controller_1, view_traverse_controller_1, render_utils_1, UndefinedResourceModule, HmrContext;

@@ -124,11 +124,15 @@ export function traverseBehaviorInstruction(classOrFunction, behaviorInstruction
 }
 export function traverseViewModel(classOrFunction, viewModel, info) {
     const matches = [];
-    if (!viewModel || info.previouslyTraversed.has(viewModel))
+    if (!viewModel)
         return matches;
+    const duplicate = info.previouslyTraversed.has(viewModel);
     info.previouslyTraversed.add(viewModel);
     if (viewModel.constructor === classOrFunction) {
-        matches.push(__assign({}, info, { instance: true }));
+        matches.push(__assign({}, info, { instance: true, duplicate }));
+        if (duplicate) {
+            return matches;
+        }
     }
     matches.push(...traverseOverrideContext(classOrFunction, viewModel.overrideContext, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'overrideContext' })), ...traverseRouter(classOrFunction, viewModel.router, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'router' })));
     return matches;

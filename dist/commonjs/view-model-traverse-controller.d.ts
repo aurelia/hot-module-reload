@@ -8,6 +8,7 @@ export interface TraversalInfo {
     childOfViewSlot?: ViewSlotCorrect;
     relatedView?: ViewCorrect;
     instance?: boolean;
+    duplicate?: boolean;
 }
 /**
  *  traverse interesting places in Controller:
