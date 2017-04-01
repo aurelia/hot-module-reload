@@ -43,7 +43,7 @@ export class HmrContext {
   moduleAnalyzerCache: { [moduleId: string]: ResourceModuleCorrect } = this.viewEngine.moduleAnalyzer.cache;
 
   constructor (public loader: Loader & { moduleRegistry: Object, templateRegistry: Object }) {
-    this.viewEngine.addResourcePlugin('.css', {
+    const styleResourcePlugin = {
       fetch: (moduleId: string) => {
         return {
           [moduleId]: _createCSSResource(moduleId)
@@ -52,7 +52,8 @@ export class HmrContext {
       hot: (moduleId: string) => {
         this.reloadCss(moduleId);
       }
-    });
+    };
+    ['.css', '.less', '.sass', '.scss', '.styl'].forEach(ext => this.viewEngine.addResourcePlugin(ext, styleResourcePlugin));
   }
 
   /**
