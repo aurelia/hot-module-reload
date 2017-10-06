@@ -94,7 +94,7 @@ System.register(["aurelia-pal", "aurelia-metadata", "aurelia-templating", "aurel
                     this.loader = loader;
                     this.viewEngine = aurelia_dependency_injection_1.Container.instance.get(aurelia_templating_1.ViewEngine);
                     this.moduleAnalyzerCache = this.viewEngine.moduleAnalyzer.cache;
-                    this.viewEngine.addResourcePlugin('.css', {
+                    var styleResourcePlugin = {
                         fetch: function (moduleId) {
                             return _a = {},
                                 _a[moduleId] = hmr_css_resource_1._createCSSResource(moduleId),
@@ -104,7 +104,8 @@ System.register(["aurelia-pal", "aurelia-metadata", "aurelia-templating", "aurel
                         hot: function (moduleId) {
                             _this.reloadCss(moduleId);
                         }
-                    });
+                    };
+                    ['.css', '.less', '.sass', '.scss', '.styl'].forEach(function (ext) { return _this.viewEngine.addResourcePlugin(ext, styleResourcePlugin); });
                 }
                 /**
                  * Handles ViewModel changes

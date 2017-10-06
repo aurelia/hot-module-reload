@@ -1,6 +1,6 @@
 {
   "name": "aurelia-hot-module-reload",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tools designed to enable HMR for Aurelia's loaders.",
   "keywords": [
     "aurelia",
@@ -27,8 +27,7 @@
     "postbuild:doc": "aurelia-tools doc-jsonshape",
     "release": "aurelia-tools changelog"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "aurelia-tools": "github:aurelia/tools#cli",
     "concurrently": "^3.1.0",

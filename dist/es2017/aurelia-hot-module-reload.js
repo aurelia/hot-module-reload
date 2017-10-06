@@ -29,7 +29,7 @@ export class HmrContext {
         this.loader = loader;
         this.viewEngine = Container.instance.get(ViewEngine);
         this.moduleAnalyzerCache = this.viewEngine.moduleAnalyzer.cache;
-        this.viewEngine.addResourcePlugin('.css', {
+        const styleResourcePlugin = {
             fetch: (moduleId) => {
                 return {
                     [moduleId]: _createCSSResource(moduleId)
@@ -38,7 +38,8 @@ export class HmrContext {
             hot: (moduleId) => {
                 this.reloadCss(moduleId);
             }
-        });
+        };
+        ['.css', '.less', '.sass', '.scss', '.styl'].forEach(ext => this.viewEngine.addResourcePlugin(ext, styleResourcePlugin));
     }
     /**
      * Handles ViewModel changes

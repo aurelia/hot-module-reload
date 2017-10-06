@@ -68,7 +68,7 @@ var HmrContext = (function () {
         this.loader = loader;
         this.viewEngine = Container.instance.get(ViewEngine);
         this.moduleAnalyzerCache = this.viewEngine.moduleAnalyzer.cache;
-        this.viewEngine.addResourcePlugin('.css', {
+        var styleResourcePlugin = {
             fetch: function (moduleId) {
                 return _a = {},
                     _a[moduleId] = _createCSSResource(moduleId),
@@ -78,7 +78,8 @@ var HmrContext = (function () {
             hot: function (moduleId) {
                 _this.reloadCss(moduleId);
             }
-        });
+        };
+        ['.css', '.less', '.sass', '.scss', '.styl'].forEach(function (ext) { return _this.viewEngine.addResourcePlugin(ext, styleResourcePlugin); });
     }
     /**
      * Handles ViewModel changes

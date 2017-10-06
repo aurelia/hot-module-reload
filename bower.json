@@ -1,6 +1,6 @@
 {
   "name": "aurelia-hot-module-reload",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tools designed to enable HMR for Aurelia's loaders.",
   "keywords": [
     "aurelia",
@@ -19,8 +19,11 @@
     "url": "http://github.com/aurelia/hot-module-reload"
   },
   "dependencies": {
-    "aurelia-dependency-injection": "^1.0.0",
-    "aurelia-metadata": "^1.0.0",
-    "aurelia-pal": "^1.0.0"
+    "aurelia-templating": ">=1.1.4",
+    "aurelia-pal": ">=1.1.1",
+    "aurelia-dependency-injection": ">=1.2.0",
+    "aurelia-loader": ">=1.0.0",
+    "aurelia-metadata": ">=1.0.2",
+    "aurelia-path": ">=1.1.1"
   }
 }
