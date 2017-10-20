@@ -224,14 +224,20 @@ export class HmrContext {
       return; // first load
     }
 
-    const cssPluginModuleId = this.loader.applyPluginToUrl(moduleId, 'css-resource-plugin');
+    const extensionIndex = moduleId.lastIndexOf('.');
+    const moduleExtension = moduleId.substring(extensionIndex + 1);
+    const pluginName = `${moduleExtension}-resource-plugin`;
+    const cssPluginModuleId = this.loader.applyPluginToUrl(moduleId, pluginName);
 
     console.log(`Handling HMR for ${moduleId}`);
     delete (this.loader.moduleRegistry as any)[moduleId];
     delete (this.loader.moduleRegistry as any)[cssPluginModuleId];
 
-    const analyzedModule = this.moduleAnalyzerCache[`css-resource-plugin!${moduleId}`];
-    if (!analyzedModule.resources || !analyzedModule.resources.length) {
+    const analyzedModule = this.moduleAnalyzerCache[cssPluginModuleId];
+    if (typeof analyzedModule === 'undefined') {
+      console.error(`Unable to find module, check the plugin exists and the module has been loaded with the expected plugin`);
+      return;
+    } else if (!analyzedModule.resources || !analyzedModule.resources.length) {
       console.error(`Something's wrong, no resources for this CSS file ${moduleId}`);
       return;
     }
