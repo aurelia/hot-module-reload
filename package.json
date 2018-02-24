@@ -1,6 +1,6 @@
 {
   "name": "aurelia-hot-module-reload",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tools designed to enable HMR for Aurelia's loaders.",
   "keywords": [
     "aurelia",

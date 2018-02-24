@@ -223,12 +223,19 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
             if (!(moduleId in this.loader.moduleRegistry)) {
                 return; // first load
             }
-            var cssPluginModuleId = this.loader.applyPluginToUrl(moduleId, 'css-resource-plugin');
+            var extensionIndex = moduleId.lastIndexOf('.');
+            var moduleExtension = moduleId.substring(extensionIndex + 1);
+            var pluginName = moduleExtension + "-resource-plugin";
+            var cssPluginModuleId = this.loader.applyPluginToUrl(moduleId, pluginName);
             console.log("Handling HMR for " + moduleId);
             delete this.loader.moduleRegistry[moduleId];
             delete this.loader.moduleRegistry[cssPluginModuleId];
-            var analyzedModule = this.moduleAnalyzerCache["css-resource-plugin!" + moduleId];
-            if (!analyzedModule.resources || !analyzedModule.resources.length) {
+            var analyzedModule = this.moduleAnalyzerCache[cssPluginModuleId];
+            if (typeof analyzedModule === 'undefined') {
+                console.error("Unable to find module, check the plugin exists and the module has been loaded with the expected plugin");
+                return;
+            }
+            else if (!analyzedModule.resources || !analyzedModule.resources.length) {
                 console.error("Something's wrong, no resources for this CSS file " + moduleId);
                 return;
             }
