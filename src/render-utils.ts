@@ -11,6 +11,7 @@ export function recreateView(viewFactory: ViewFactoryWithTemplate, oldViewContai
   // console.log(`new element instruction`, targetInstruction, factoryCreateInstruction);
 
   const newContainer = parentContainer.createChild();
+  newContainer._resolvers = oldViewContainer._resolvers;
   // const newContainer = oldViewContainer;
   
   const newView = viewFactory.create(newContainer, factoryCreateInstruction) as ViewCorrect;
