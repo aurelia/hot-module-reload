@@ -109,6 +109,11 @@ export class HmrContext {
                                 info.relatedView.unbind();
                                 info.relatedView.bind(bindingContext, overrideContext);
                             }
+                            // if (info.parentController && info.parentController.isBound) {
+                            //   const scope = info.parentController.scope;
+                            //   info.parentController.unbind();
+                            //   info.parentController.bind(scope);
+                            // }
                         }
                         else {
                             console.log(`Replacing`, info.immediateParent[info.propertyInParent], `with`, newExportValue);
@@ -201,6 +206,7 @@ export class HmrContext {
         if (cssResource._scoped && cssResource._scoped.injectedElements.length) {
             console.error(`Hot Reloading scopedCSS is not yet supported!`);
             return;
+            // cssResource._scoped.injectedElements.forEach(el => el.remove());
         }
         if (cssResource.injectedElement) {
             cssResource.injectedElement.remove();

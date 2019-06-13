@@ -1,6 +1,6 @@
 {
   "name": "aurelia-hot-module-reload",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Tools designed to enable HMR for Aurelia's loaders.",
   "keywords": [
     "aurelia",
@@ -21,10 +21,6 @@
   "scripts": {
     "build:compile": "aurelia-tools ts-build-all --continue-when-failed --clean-before",
     "build": "npm run build:compile",
-    "postbuild": "npm run build:doc",
-    "prebuild:doc": "aurelia-tools doc-build --continue-when-failed",
-    "build:doc": "aurelia-tools doc-shape-defs && aurelia-tools typedoc",
-    "postbuild:doc": "aurelia-tools doc-jsonshape",
     "release": "aurelia-tools changelog"
   },
   "dependencies": {},

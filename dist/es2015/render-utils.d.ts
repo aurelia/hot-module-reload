@@ -2,7 +2,7 @@ import { AUController, ViewFactoryWithTemplate, ViewCorrect, ViewSlotCorrect } f
 import { Container } from 'aurelia-dependency-injection';
 export declare function recreateView(viewFactory: ViewFactoryWithTemplate, oldViewContainer: Container): ViewCorrect;
 export declare function cleanupView(view: ViewCorrect): {
-    nextSibling: Node | null;
+    nextSibling: ChildNode | null;
     parent: HTMLElement | null;
     wasBound: boolean;
     wasAttached: boolean;

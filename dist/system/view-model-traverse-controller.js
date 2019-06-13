@@ -1,12 +1,22 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
-    var __assign = (this && this.__assign) || Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
+    var __assign = (this && this.__assign) || function () {
+        __assign = Object.assign || function(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                    t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+    var __spreadArrays = (this && this.__spreadArrays) || function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
     };
     var __moduleName = context_1 && context_1.id;
     /**
@@ -61,7 +71,7 @@ System.register([], function (exports_1, context_1) {
         if (!controller || info.previouslyTraversed.has(controller))
             return matches;
         info.previouslyTraversed.add(controller);
-        matches.push.apply(matches, traverseBehaviorResource(classOrFunction, controller.behavior, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'behavior' })).concat(traverseBehaviorInstruction(classOrFunction, controller.instruction, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'instruction' })), traverseView(classOrFunction, controller.scope, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'scope' })), traverseView(classOrFunction, controller.view, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'view' })), traverseViewModel(classOrFunction, controller.viewModel, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'viewModel' }))));
+        matches.push.apply(matches, __spreadArrays(traverseBehaviorResource(classOrFunction, controller.behavior, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'behavior' })), traverseBehaviorInstruction(classOrFunction, controller.instruction, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'instruction' })), traverseView(classOrFunction, controller.scope, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'scope' })), traverseView(classOrFunction, controller.view, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'view' })), traverseViewModel(classOrFunction, controller.viewModel, __assign({}, info, { parentController: controller, immediateParent: controller, propertyInParent: 'viewModel' }))));
         return matches;
     }
     exports_1("traverseController", traverseController);
@@ -126,7 +136,7 @@ System.register([], function (exports_1, context_1) {
         if (!behaviorInstruction || info.previouslyTraversed.has(behaviorInstruction))
             return matches;
         info.previouslyTraversed.add(behaviorInstruction);
-        matches.push.apply(matches, traverseViewFactory(classOrFunction, behaviorInstruction.viewFactory, __assign({}, info, { immediateParent: behaviorInstruction, propertyInParent: 'viewFactory' })).concat(traverseViewModel(classOrFunction, behaviorInstruction.viewModel, __assign({}, info, { immediateParent: behaviorInstruction, propertyInParent: 'viewModel' }))));
+        matches.push.apply(matches, __spreadArrays(traverseViewFactory(classOrFunction, behaviorInstruction.viewFactory, __assign({}, info, { immediateParent: behaviorInstruction, propertyInParent: 'viewFactory' })), traverseViewModel(classOrFunction, behaviorInstruction.viewModel, __assign({}, info, { immediateParent: behaviorInstruction, propertyInParent: 'viewModel' }))));
         return matches;
     }
     exports_1("traverseBehaviorInstruction", traverseBehaviorInstruction);
@@ -142,7 +152,7 @@ System.register([], function (exports_1, context_1) {
                 return matches;
             }
         }
-        matches.push.apply(matches, traverseOverrideContext(classOrFunction, viewModel.overrideContext, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'overrideContext' })).concat(traverseRouter(classOrFunction, viewModel.router, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'router' }))));
+        matches.push.apply(matches, __spreadArrays(traverseOverrideContext(classOrFunction, viewModel.overrideContext, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'overrideContext' })), traverseRouter(classOrFunction, viewModel.router, __assign({}, info, { immediateParent: viewModel, propertyInParent: 'router' }))));
         return matches;
     }
     exports_1("traverseViewModel", traverseViewModel);
@@ -166,7 +176,7 @@ System.register([], function (exports_1, context_1) {
         if (!routerView || info.previouslyTraversed.has(routerView))
             return matches;
         info.previouslyTraversed.add(routerView);
-        matches.push.apply(matches, traverseOverrideContext(classOrFunction, routerView.overrideContext, __assign({}, info, { immediateParent: routerView, propertyInParent: 'overrideContext' })).concat(traverseView(classOrFunction, routerView.owningView, __assign({}, info, { immediateParent: routerView, propertyInParent: 'owningView' })), traverseView(classOrFunction, routerView.view, __assign({}, info, { immediateParent: routerView, propertyInParent: 'view' })), traverseViewSlot(classOrFunction, routerView.viewSlot, __assign({}, info, { immediateParent: routerView, propertyInParent: 'viewSlot' }))));
+        matches.push.apply(matches, __spreadArrays(traverseOverrideContext(classOrFunction, routerView.overrideContext, __assign({}, info, { immediateParent: routerView, propertyInParent: 'overrideContext' })), traverseView(classOrFunction, routerView.owningView, __assign({}, info, { immediateParent: routerView, propertyInParent: 'owningView' })), traverseView(classOrFunction, routerView.view, __assign({}, info, { immediateParent: routerView, propertyInParent: 'view' })), traverseViewSlot(classOrFunction, routerView.viewSlot, __assign({}, info, { immediateParent: routerView, propertyInParent: 'viewSlot' }))));
         return matches;
     }
     exports_1("traverseRouterView", traverseRouterView);
@@ -175,7 +185,7 @@ System.register([], function (exports_1, context_1) {
         if (!view || info.previouslyTraversed.has(view))
             return matches;
         info.previouslyTraversed.add(view);
-        matches.push.apply(matches, traverseViewModel(classOrFunction, view.bindingContext, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'bindingContext' })).concat(traverseController(classOrFunction, view.controller, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'controller' })), traverseOverrideContext(classOrFunction, view.overrideContext, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'overrideContext' })), traverseViewResources(classOrFunction, view.resources, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'resources' })), traverseViewFactory(classOrFunction, view.viewFactory, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'viewFactory' }))));
+        matches.push.apply(matches, __spreadArrays(traverseViewModel(classOrFunction, view.bindingContext, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'bindingContext' })), traverseController(classOrFunction, view.controller, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'controller' })), traverseOverrideContext(classOrFunction, view.overrideContext, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'overrideContext' })), traverseViewResources(classOrFunction, view.resources, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'resources' })), traverseViewFactory(classOrFunction, view.viewFactory, __assign({}, info, { relatedView: view, immediateParent: view, propertyInParent: 'viewFactory' }))));
         if (view.controllers && view.controllers.length) {
             view.controllers.forEach(function (controller, index) {
                 matches.push.apply(matches, traverseController(classOrFunction, controller, __assign({}, info, { relatedView: view, immediateParent: view.controllers, propertyInParent: index })));
@@ -194,7 +204,7 @@ System.register([], function (exports_1, context_1) {
         if (!overrideContext || info.previouslyTraversed.has(overrideContext))
             return matches;
         info.previouslyTraversed.add(overrideContext);
-        matches.push.apply(matches, traverseViewModel(classOrFunction, overrideContext.bindingContext, __assign({}, info, { immediateParent: overrideContext, propertyInParent: 'bindingContext' })).concat(traverseOverrideContext(classOrFunction, overrideContext.parentOverrideContext, __assign({}, info, { immediateParent: overrideContext, propertyInParent: 'parentOverrideContext' }))));
+        matches.push.apply(matches, __spreadArrays(traverseViewModel(classOrFunction, overrideContext.bindingContext, __assign({}, info, { immediateParent: overrideContext, propertyInParent: 'bindingContext' })), traverseOverrideContext(classOrFunction, overrideContext.parentOverrideContext, __assign({}, info, { immediateParent: overrideContext, propertyInParent: 'parentOverrideContext' }))));
         return matches;
     }
     exports_1("traverseOverrideContext", traverseOverrideContext);
@@ -203,7 +213,7 @@ System.register([], function (exports_1, context_1) {
         if (!viewSlot || info.previouslyTraversed.has(viewSlot))
             return matches;
         info.previouslyTraversed.add(viewSlot);
-        matches.push.apply(matches, traverseViewModel(classOrFunction, viewSlot.bindingContext, __assign({}, info, { immediateParent: viewSlot, propertyInParent: 'bindingContext' })).concat(traverseOverrideContext(classOrFunction, viewSlot.overrideContext, __assign({}, info, { immediateParent: viewSlot, propertyInParent: 'overrideContext' }))));
+        matches.push.apply(matches, __spreadArrays(traverseViewModel(classOrFunction, viewSlot.bindingContext, __assign({}, info, { immediateParent: viewSlot, propertyInParent: 'bindingContext' })), traverseOverrideContext(classOrFunction, viewSlot.overrideContext, __assign({}, info, { immediateParent: viewSlot, propertyInParent: 'overrideContext' }))));
         if (viewSlot.children && viewSlot.children.length) {
             viewSlot.children.forEach(function (child, index) {
                 matches.push.apply(matches, traverseView(classOrFunction, child, __assign({}, info, { childOfViewSlot: viewSlot, relatedView: child, immediateParent: viewSlot.children, propertyInParent: index })));

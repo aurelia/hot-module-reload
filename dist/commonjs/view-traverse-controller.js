@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var aurelia_templating_1 = require("aurelia-templating");
 var aurelia_hot_module_reload_1 = require("./aurelia-hot-module-reload");
 function getViewSlots(view) {

@@ -7,6 +7,7 @@ export function recreateView(viewFactory, oldViewContainer) {
     // let factoryCreateInstruction = ({partReplacements: null} as BehaviorInstruction);
     // console.log(`new element instruction`, targetInstruction, factoryCreateInstruction);
     const newContainer = parentContainer.createChild();
+    newContainer._resolvers = oldViewContainer._resolvers;
     // const newContainer = oldViewContainer;
     const newView = viewFactory.create(newContainer, factoryCreateInstruction);
     newView._isUserControlled = true;

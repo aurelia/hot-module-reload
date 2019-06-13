@@ -1,16 +1,25 @@
 System.register(["aurelia-templating", "aurelia-loader", "aurelia-path", "aurelia-pal"], function (exports_1, context_1) {
     "use strict";
-    var __extends = (this && this.__extends) || function (d, b) {
-        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
+    var __extends = (this && this.__extends) || (function () {
+        var extendStatics = function (d, b) {
+            extendStatics = Object.setPrototypeOf ||
+                ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            return extendStatics(d, b);
+        };
+        return function (d, b) {
+            extendStatics(d, b);
+            function __() { this.constructor = d; }
+            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+        };
+    })();
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var aurelia_templating_1, aurelia_loader_1, aurelia_path_1, aurelia_pal_1, cssUrlMatcher, CSSResource, CSSViewEngineHooks;
     var __moduleName = context_1 && context_1.id;
     function fixupCSSUrls(address, css) {
         if (typeof css !== 'string') {
@@ -26,20 +35,19 @@ System.register(["aurelia-templating", "aurelia-loader", "aurelia-path", "aureli
     }
     exports_1("fixupCSSUrls", fixupCSSUrls);
     function _createCSSResource(address) {
-        var ViewCSS = (function (_super) {
+        var ViewCSS = /** @class */ (function (_super) {
             __extends(ViewCSS, _super);
             function ViewCSS() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
+            ViewCSS = __decorate([
+                aurelia_templating_1.resource(new CSSResource(address))
+            ], ViewCSS);
             return ViewCSS;
         }(CSSViewEngineHooks));
-        ViewCSS = __decorate([
-            aurelia_templating_1.resource(new CSSResource(address))
-        ], ViewCSS);
         return ViewCSS;
     }
     exports_1("_createCSSResource", _createCSSResource);
-    var aurelia_templating_1, aurelia_loader_1, aurelia_path_1, aurelia_pal_1, cssUrlMatcher, CSSResource, CSSViewEngineHooks;
     return {
         setters: [
             function (aurelia_templating_1_1) {
@@ -59,7 +67,7 @@ System.register(["aurelia-templating", "aurelia-loader", "aurelia-path", "aureli
             // this is almost the same as aurelia-templating-resources/css-resource
             // with the exception that it keeps track of the HTMLStyleElement that is being added
             exports_1("cssUrlMatcher", cssUrlMatcher = /url\((?!['"]data)([^)]+)\)/gi);
-            CSSResource = (function () {
+            CSSResource = /** @class */ (function () {
                 function CSSResource(address) {
                     this.injectedElement = null;
                     this.address = address;
@@ -100,7 +108,7 @@ System.register(["aurelia-templating", "aurelia-loader", "aurelia-path", "aureli
                 return CSSResource;
             }());
             exports_1("CSSResource", CSSResource);
-            CSSViewEngineHooks = (function () {
+            CSSViewEngineHooks = /** @class */ (function () {
                 function CSSViewEngineHooks(owner) {
                     this.injectedElements = [];
                     this.owner = owner;

@@ -1,8 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,6 +19,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 define(["require", "exports", "aurelia-templating", "aurelia-loader", "aurelia-path", "aurelia-pal"], function (require, exports, aurelia_templating_1, aurelia_loader_1, aurelia_path_1, aurelia_pal_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     // this is almost the same as aurelia-templating-resources/css-resource
     // with the exception that it keeps track of the HTMLStyleElement that is being added
     exports.cssUrlMatcher = /url\((?!['"]data)([^)]+)\)/gi;
@@ -27,7 +36,7 @@ define(["require", "exports", "aurelia-templating", "aurelia-loader", "aurelia-p
         });
     }
     exports.fixupCSSUrls = fixupCSSUrls;
-    var CSSResource = (function () {
+    var CSSResource = /** @class */ (function () {
         function CSSResource(address) {
             this.injectedElement = null;
             this.address = address;
@@ -68,7 +77,7 @@ define(["require", "exports", "aurelia-templating", "aurelia-loader", "aurelia-p
         return CSSResource;
     }());
     exports.CSSResource = CSSResource;
-    var CSSViewEngineHooks = (function () {
+    var CSSViewEngineHooks = /** @class */ (function () {
         function CSSViewEngineHooks(owner) {
             this.injectedElements = [];
             this.owner = owner;
@@ -91,16 +100,16 @@ define(["require", "exports", "aurelia-templating", "aurelia-loader", "aurelia-p
     }());
     exports.CSSViewEngineHooks = CSSViewEngineHooks;
     function _createCSSResource(address) {
-        var ViewCSS = (function (_super) {
+        var ViewCSS = /** @class */ (function (_super) {
             __extends(ViewCSS, _super);
             function ViewCSS() {
-                return _super.apply(this, arguments) || this;
+                return _super !== null && _super.apply(this, arguments) || this;
             }
+            ViewCSS = __decorate([
+                aurelia_templating_1.resource(new CSSResource(address))
+            ], ViewCSS);
             return ViewCSS;
         }(CSSViewEngineHooks));
-        ViewCSS = __decorate([
-            aurelia_templating_1.resource(new CSSResource(address))
-        ], ViewCSS);
         return ViewCSS;
     }
     exports._createCSSResource = _createCSSResource;

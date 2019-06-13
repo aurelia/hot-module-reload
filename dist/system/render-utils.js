@@ -1,5 +1,6 @@
 System.register(["aurelia-templating"], function (exports_1, context_1) {
     "use strict";
+    var aurelia_templating_1;
     var __moduleName = context_1 && context_1.id;
     function recreateView(viewFactory, oldViewContainer) {
         var parentContainer = oldViewContainer.parent || oldViewContainer;
@@ -9,6 +10,7 @@ System.register(["aurelia-templating"], function (exports_1, context_1) {
         // let factoryCreateInstruction = ({partReplacements: null} as BehaviorInstruction);
         // console.log(`new element instruction`, targetInstruction, factoryCreateInstruction);
         var newContainer = parentContainer.createChild();
+        newContainer._resolvers = oldViewContainer._resolvers;
         // const newContainer = oldViewContainer;
         var newView = viewFactory.create(newContainer, factoryCreateInstruction);
         newView._isUserControlled = true;
@@ -104,7 +106,6 @@ System.register(["aurelia-templating"], function (exports_1, context_1) {
         });
     }
     exports_1("rerenderMatchingSlotChildren", rerenderMatchingSlotChildren);
-    var aurelia_templating_1;
     return {
         setters: [
             function (aurelia_templating_1_1) {

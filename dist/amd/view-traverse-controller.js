@@ -1,5 +1,6 @@
 define(["require", "exports", "aurelia-templating", "./aurelia-hot-module-reload"], function (require, exports, aurelia_templating_1, aurelia_hot_module_reload_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     function getViewSlots(view) {
         if (view.children && view.children.length) {
             return view.children.filter(function (viewSlot) {

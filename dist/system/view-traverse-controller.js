@@ -1,5 +1,6 @@
 System.register(["aurelia-templating", "./aurelia-hot-module-reload"], function (exports_1, context_1) {
     "use strict";
+    var aurelia_templating_1, aurelia_hot_module_reload_1;
     var __moduleName = context_1 && context_1.id;
     function getViewSlots(view) {
         if (view.children && view.children.length) {
@@ -59,7 +60,6 @@ System.register(["aurelia-templating", "./aurelia-hot-module-reload"], function 
         return toRender;
     }
     exports_1("getElementsToRerender", getElementsToRerender);
-    var aurelia_templating_1, aurelia_hot_module_reload_1;
     return {
         setters: [
             function (aurelia_templating_1_1) {

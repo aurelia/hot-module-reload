@@ -1,8 +1,16 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -29,7 +37,7 @@ export function fixupCSSUrls(address, css) {
         return 'url(\'' + relativeToFile(p1, address) + '\')';
     });
 }
-var CSSResource = (function () {
+var CSSResource = /** @class */ (function () {
     function CSSResource(address) {
         this.injectedElement = null;
         this.address = address;
@@ -70,7 +78,7 @@ var CSSResource = (function () {
     return CSSResource;
 }());
 export { CSSResource };
-var CSSViewEngineHooks = (function () {
+var CSSViewEngineHooks = /** @class */ (function () {
     function CSSViewEngineHooks(owner) {
         this.injectedElements = [];
         this.owner = owner;
@@ -93,15 +101,15 @@ var CSSViewEngineHooks = (function () {
 }());
 export { CSSViewEngineHooks };
 export function _createCSSResource(address) {
-    var ViewCSS = (function (_super) {
+    var ViewCSS = /** @class */ (function (_super) {
         __extends(ViewCSS, _super);
         function ViewCSS() {
-            return _super.apply(this, arguments) || this;
+            return _super !== null && _super.apply(this, arguments) || this;
         }
+        ViewCSS = __decorate([
+            resource(new CSSResource(address))
+        ], ViewCSS);
         return ViewCSS;
     }(CSSViewEngineHooks));
-    ViewCSS = __decorate([
-        resource(new CSSResource(address))
-    ], ViewCSS);
     return ViewCSS;
 }

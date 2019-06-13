@@ -3,18 +3,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -35,12 +35,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templating", "aurelia-dependency-injection", "./hmr-css-resource", "./view-model-traverse-controller", "./view-traverse-controller", "./render-utils"], function (require, exports, aurelia_pal_1, aurelia_metadata_1, aurelia_templating_1, aurelia_dependency_injection_1, hmr_css_resource_1, view_model_traverse_controller_1, view_traverse_controller_1, render_utils_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var UndefinedResourceModule = { id: null, mainResource: { metadata: {}, value: undefined } };
     function getAuElements() {
         return Array.from(aurelia_pal_1.DOM.querySelectorAll('.au-target'));
     }
     exports.getAuElements = getAuElements;
     function getControllersWithClassInstances(oldPrototype) {
+        var _a, _b;
         // get visible elements to re-render:
         var auElements = getAuElements();
         /* NOTE: viewless components like blur-image do not have el.au.controller set */
@@ -55,10 +57,9 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
             });
         }));
         return traversalInfo;
-        var _a, _b;
     }
     exports.getControllersWithClassInstances = getControllersWithClassInstances;
-    var HmrContext = (function () {
+    var HmrContext = /** @class */ (function () {
         function HmrContext(loader) {
             var _this = this;
             this.loader = loader;
@@ -66,10 +67,10 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
             this.moduleAnalyzerCache = this.viewEngine.moduleAnalyzer.cache;
             var styleResourcePlugin = {
                 fetch: function (moduleId) {
+                    var _a;
                     return _a = {},
                         _a[moduleId] = hmr_css_resource_1._createCSSResource(moduleId),
                         _a;
-                    var _a;
                 },
                 hot: function (moduleId) {
                     _this.reloadCss(moduleId);
@@ -82,7 +83,7 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
          */
         HmrContext.prototype.handleModuleChange = function (moduleId, hot) {
             return __awaiter(this, void 0, void 0, function () {
-                var previousModule, newModule, oldResourceModule, newResourceModule, origin, normalizedId, moduleMember, keys;
+                var previousModule, newModule, oldResourceModule, newResourceModule, origin_1, normalizedId, moduleMember, keys;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
@@ -98,9 +99,9 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
                             newModule = _a.sent();
                             oldResourceModule = this.moduleAnalyzerCache[moduleId];
                             if (oldResourceModule) {
-                                origin = aurelia_metadata_1.Origin.get(newModule);
-                                normalizedId = origin.moduleId;
-                                moduleMember = origin.moduleMember;
+                                origin_1 = aurelia_metadata_1.Origin.get(newModule);
+                                normalizedId = origin_1.moduleId;
+                                moduleMember = origin_1.moduleMember;
                                 newResourceModule = this.viewEngine.moduleAnalyzer.analyze(normalizedId, newModule, moduleMember);
                                 if (!newResourceModule.mainResource && !newResourceModule.resources) {
                                     hot.decline(moduleId);
@@ -147,6 +148,11 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
                                                     info.relatedView.unbind();
                                                     info.relatedView.bind(bindingContext, overrideContext);
                                                 }
+                                                // if (info.parentController && info.parentController.isBound) {
+                                                //   const scope = info.parentController.scope;
+                                                //   info.parentController.unbind();
+                                                //   info.parentController.bind(scope);
+                                                // }
                                             }
                                             else {
                                                 console.log("Replacing", info.immediateParent[info.propertyInParent], "with", newExportValue);
@@ -244,6 +250,7 @@ define(["require", "exports", "aurelia-pal", "aurelia-metadata", "aurelia-templa
             if (cssResource._scoped && cssResource._scoped.injectedElements.length) {
                 console.error("Hot Reloading scopedCSS is not yet supported!");
                 return;
+                // cssResource._scoped.injectedElements.forEach(el => el.remove());
             }
             if (cssResource.injectedElement) {
                 cssResource.injectedElement.remove();

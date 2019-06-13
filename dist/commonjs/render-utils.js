@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var aurelia_templating_1 = require("aurelia-templating");
 function recreateView(viewFactory, oldViewContainer) {
     var parentContainer = oldViewContainer.parent || oldViewContainer;
@@ -8,6 +9,7 @@ function recreateView(viewFactory, oldViewContainer) {
     // let factoryCreateInstruction = ({partReplacements: null} as BehaviorInstruction);
     // console.log(`new element instruction`, targetInstruction, factoryCreateInstruction);
     var newContainer = parentContainer.createChild();
+    newContainer._resolvers = oldViewContainer._resolvers;
     // const newContainer = oldViewContainer;
     var newView = viewFactory.create(newContainer, factoryCreateInstruction);
     newView._isUserControlled = true;
